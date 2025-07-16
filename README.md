@@ -19,10 +19,9 @@ PrintCostPro/
 │       ├── 3dprint.ico
 │       ├── MapleMono-NF-CN-Regular.ttf
 │       └── PingFang-Medium.ttf
-├── dist/
 ├── build.bat
 ├── requirements.txt
-├── README.md
+└── README.md
 ```
 
 ---
