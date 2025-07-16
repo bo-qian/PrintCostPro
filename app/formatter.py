@@ -1,13 +1,3 @@
-'''
-Author: bo-qian bqian@shu.edu.cn
-Date: 2025-07-16 15:19:13
-LastEditors: bo-qian bqian@shu.edu.cn
-LastEditTime: 2025-07-16 21:10:24
-FilePath: \PrintCostPro\app\formatter.py
-Description: Formatting and displaying cost calculation results in the 3D printing cost calculator application
-Copyright (c) 2025 by Bo Qian, All Rights Reserved. 
-'''
-
 import unicodedata
 
 def get_display_width(text):

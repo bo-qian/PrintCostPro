@@ -1,19 +1,10 @@
-'''
-Author: bo-qian bqian@shu.edu.cn
-Date: 2025-07-16 15:18:40
-LastEditors: bo-qian bqian@shu.edu.cn
-LastEditTime: 2025-07-16 20:45:05
-FilePath: \PrintCostPro\app\gui.py
-Description: GUI for the 3D printing cost calculator application
-Copyright (c) 2025 by Bo Qian, All Rights Reserved. 
-'''
-
 from PyQt5.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit,
     QPushButton, QPlainTextEdit, QFileDialog, QFormLayout, QCheckBox, QMessageBox
 )
-from PyQt5.QtGui import QFont
+from PyQt5.QtGui import QFont, QIcon, QFontDatabase
 from PyQt5.QtCore import Qt
+from utils import resource_path
 import os
 import pandas as pd
 
@@ -25,7 +16,10 @@ from exporter import export_to_excel
 class CostCalculatorApp(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("PrintCostPro - 多零件3D打印成本助手")
+        icon_path = resource_path("app/resources/3dprint.ico")
+        self.setWindowIcon(QIcon(icon_path))
+
+        self.setWindowTitle("PrintCostPro - 3D打印预算计算器")
         # self.setMinimumSize(800, 500)
         self.setMinimumWidth(900)  # 初始窗口宽度
         # self.initial_height = 500  # 初始窗口高度
@@ -388,19 +382,18 @@ class CostCalculatorApp(QWidget):
         print(f"初始窗口大小: {self.initial_size.width()}x{self.initial_size.height()}")
 
     def load_chinese_font(self):
-        # 创建字体对象
-        font = QFont()
-        font.setFamily("PingFang SC Heavy")  # 设置字体为Pingfang
-        # font.setFamily("Microsoft YaHei")  # 将字体替换为微软雅黑
-        font.setBold(True)  # 设置加粗
+        font_path = resource_path("app/resources/PingFang-Medium.ttf")
+        font_id = QFontDatabase.addApplicationFont(font_path)
+        loaded_fonts = QFontDatabase.applicationFontFamilies(font_id)
 
-        # 设置字体大小
-        font.setPointSize(12)
-
-        # 设置字体样式策略，优先使用 Helvetica 显示英文和数字
-        font.setStyleStrategy(QFont.PreferDefault)
-
-        return font
+        if loaded_fonts:
+            font = QFont(loaded_fonts[0])
+            font.setBold(True)
+            font.setPointSize(12)
+            return font
+        else:
+            print("⚠️ 字体加载失败，使用默认字体")
+            return QFont()
     
     def clear_parts_display(self):
         """清空零件信息框和输出信息框的内容"""

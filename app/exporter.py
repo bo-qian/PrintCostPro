@@ -1,13 +1,3 @@
-'''
-Author: bo-qian bqian@shu.edu.cn
-Date: 2025-07-16 15:19:31
-LastEditors: bo-qian bqian@shu.edu.cn
-LastEditTime: 2025-07-16 21:18:34
-FilePath: \PrintCostPro\app\exporter.py
-Description: Exporting cost calculation results to a file in the 3D printing cost calculator application
-Copyright (c) 2025 by Bo Qian, All Rights Reserved. 
-'''
-
 from datetime import datetime
 import pandas as pd
 import subprocess

@@ -1,13 +1,3 @@
-'''
-Author: bo-qian bqian@shu.edu.cn
-Date: 2025-07-16 15:18:52
-LastEditors: bo-qian bqian@shu.edu.cn
-LastEditTime: 2025-07-16 20:38:27
-FilePath: \PrintCostPro\app\logic.py
-Description: Logic calculations for the 3D printing cost calculator application
-Copyright (c) 2025 by Bo Qian, All Rights Reserved. 
-'''
-
 import re
 
 def convert_duration_to_hours(duration_str):
